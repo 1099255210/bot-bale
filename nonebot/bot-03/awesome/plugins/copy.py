@@ -1,15 +1,15 @@
-from nonebot import *
+import nonebot
 import os
 import aiofiles
 
-bot = get_bot()
+bot = nonebot.get_bot()
 
 @bot.on_message("group")
 async def re(context):
     msg = context["message"]
     s_msg = str(msg)
     grp = context["group_id"]
-    qq = context["user_id"]
+    # qq = context["user_id"]
     is_msg_match = await match(s_msg)
     if (is_msg_match):
         await bot.send_group_msg(group_id=grp,message=s_msg)
@@ -17,7 +17,7 @@ async def re(context):
 
 
 async def match(str):
-    file_path = 'nonebot/bot-03/copy_data/word.txt'
+    file_path = 'nonebot/bot-03/copy_data/word.txt' # 路径请根据系统修改
     if (str == 'stop'):
         return 2
     if os.path.exists(file_path):
