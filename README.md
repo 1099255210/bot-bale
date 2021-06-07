@@ -1,56 +1,81 @@
 # bot-罢了
 
-**bot-罢了**是基于 nonebot + go-cqhttp 开发的qq机器人.
+**bot-罢了**是基于 nonebot + go-cqhttp 开发的qq机器人。
 
 ## 机器人的作用
 
-下面分模块介绍 `bot-06` 功能：
+下面分模块介绍功能：
 
-### 1 换图 changemap
+### - 换图 changemap
 
 输入 `换图 ×××` 或者 `切换 ×××` 让服务器更换地图。
 
-*计划合并到服务器管理servermanager插件中*
+*计划合并到服务器管理csgoservermanager插件中*
 
-### 2 服务器更新 csgoserverupdate
+### - 服务器更新 csgoserverupdate
 
 输入 `服务器更新` 或者 `更新` 更新服务器。
 
-*计划合并到服务器管理servermanager插件中*
+*计划合并到服务器管理csgoservermanager插件中*
 
-### 3 获取服务器状态 getstatus
+### - 获取服务器状态 getstatus
 
 输入 `状态` 获取人数、地图等信息。
 
-*计划合并到服务器管理servermanager插件中*
+*计划合并到服务器管理csgoservermanager插件中*
 
-### 4 取名（已废弃） nickname(aborted)
-
-输入 `起名` 获得一个随机名称，*api目前过期了*
-
-### 5 破防了 pofang
+### - 破防了 pofang
 
 输入 `破防了` ，机器人结合上文随机回复啥b破防消息。
 
-### 6 查询插件（测试阶段） querytest(Test)
+### - 查询插件（测试阶段） querytest(Test)
 
 输入 `查询账号 steamid64` 查询账号信息。
 
-### 7 复读机 repeatbot
+### - 复读机 repeatbot
 
 输入 `学习 ××` 学习该词汇，此后群友发该词汇时机器人会智能复读。
 
-### 8 涩图 setu
+### - 涩图 setu
 
 输入 `涩图` 或者 `setu` 机器人会发送一张涩图。
 
-### 9 steam个人信息 steamdb
+### - steam个人信息 steamdb
 
 输入 `绑定 steamid64` 可将steam账号和你的qq号绑定。
 
-输入 `信息` 可以查询自己的steam个人资料信息
+输入 `信息` 可以查询自己的steam个人资料信息。
 
-输入 `刷新` 可以刷新自己的steam个人资料信息
+输入 `刷新` 可以刷新自己的steam个人资料信息。
+
+### - 生成二维码 qrify
+
+输入 `qr 内容` 可将内容生成为二维码，支持网页链接跳转。
+
+生成的图片在服务器中保存为 `$hash.png` 经过哈希编码 ，不会从文件名泄露信息。
+
+### - 处理请求 dealwithrequests
+
+处理对机器人的好友申请以及加群请求。
+
+## 仓库目录结构
+
+```
+- bot-bale
+	+ archived				// 已经废弃的机器人文件
+	- go-cqhttp				// go-cqhttp 持续更新
+		* go-cqhttp_version_linux_amd64.tar.gz
+		* go-cqhttp_version_windows_amd64.zip
+	- nonebot
+		* bot.py
+		* config.py
+		- awesome\plugins	// 真正属于作者的内容
+			* [plugins].py	
+			* ...
+		+ copy_data			// 复读机器人词典存放
+		+ pofang_data		// 破防机器人词典存放
+		+ qr_data			// 二维码图片存放
+```
 
 ## 一些笔记
 
@@ -75,3 +100,14 @@
 | 2    | Android Watch | 无法接收`notify`事件、口令红包、撤回消息 |
 | 3    | MacOS         |                                          |
 
+## 历史版本的机器人
+
+全部存放在 `archived` 文件夹中了，机器人古老的版本，包含许多**不可直视**的代码，**慎入！！！**
+
+## 未完成的工作
+
+- [ ] 为插件添加足够多的注释
+
+- [ ] 解释部分功能的工作原理
+- [ ] 异步实现所有功能
+- [ ] 添加一些笔记
